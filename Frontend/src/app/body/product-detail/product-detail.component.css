@@ -1,0 +1,43 @@
+.section{
+    text-align: center;
+    background-color: rgb(240, 240, 240);
+    margin: 20px 20%;
+    padding: 20px 0;
+}
+
+.flex-space{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price{
+    margin-top: 20px;
+}
+
+img{
+    width: 250px;
+}
+
+.detail{
+    margin: 5% 15%;
+    text-align: left;
+}
+
+span{
+    font-size: 14px;
+    color: rgb(128, 128, 128);
+    margin: 0 10px;
+}
+
+.red{
+    color: red;
+    text-decoration: line-through;
+}
+
+button{
+    color: aliceblue;
+    background-color: black;
+    padding: 5px 10px;
+    border-radius: 20px;
+}

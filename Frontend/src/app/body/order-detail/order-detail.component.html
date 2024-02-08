@@ -1,0 +1,18 @@
+<h4 *ngIf="!isEmpty">Order list is empty!!!</h4>
+<div class="section">
+    <div class="flex-center product" *ngFor="let order of orders">
+        <div class="image">
+            <img src="{{order.image}}">
+        </div>
+        <div class="description">
+            <div class="product-head">
+                <a class="product-name" routerLink="/product-detail/{{order.productId}}">{{order.productName}}</a>
+            </div>
+            <p class="price">₹{{order.price | number: '1.2-2'}}</p>
+            <p class="price">Quantity : {{order.quantity}}</p>
+        </div>
+        <div class="price">
+            <p>{{order.orderDate | slice:0:10}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+  <nav class="navbar navbar-light bg-light justify-content-between">
+    <div>
+        <a routerLink="" class="navbar-brand" id="brand">Doorstep</a>
+          <a routerLink="" *ngIf="isUserActive" class="navbar-brand" id="auth">{{currentUser()}}</a>
+          <a routerLink="admin/add-product" *ngIf="isAdmin()" class="navbar-brand" id="auth">Add Product</a>
+          <a routerLink="dashboard/view-cart" *ngIf="!isAdmin() && isUserActive" class="navbar-brand" id="auth">View Cart</a>
+          <a routerLink="dashboard/my-order" *ngIf="!isAdmin() && isUserActive" class="navbar-brand" id="auth">My Order</a>
+        </div>
+        <div *ngIf="!isUserActive">
+          <a routerLink="auth/login" class="navbar-brand" id="auth">Login</a>
+          <a routerLink="auth/signup" class="navbar-brand" id="auth">SignUp</a>
+        </div>
+        <div *ngIf="isUserActive">
+          <a (click)="logout()" class="navbar-brand" id="auth">Logout</a>
+          <a routerLink="" class="navbar-brand" id="auth">Help</a>
+    </div>
+  </nav>
+  <router-outlet></router-outlet>
+ 

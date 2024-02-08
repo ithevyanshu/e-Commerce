@@ -1,0 +1,79 @@
+<div class="form">
+    <h3>Add Product</h3>
+    <form [formGroup]="product" (ngSubmit)="onSubmit(product.invalid)">
+        <p [ngClass]="isValid?'sucess':'warning'">{{displayMsg}}</p>
+        <div>
+            <input 
+                type="text" 
+                formControlName="productName"
+                placeholder="Product Name"
+            >
+            <div class="warning" *ngIf="Name.errors?.['required'] && Name.touched">*Product name is Required</div>
+            <div class="warning" *ngIf="Name.errors?.['maxlength']">*Too long</div>
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="description" 
+                placeholder="Product Description"
+            >
+            <div class="warning" *ngIf="Description.errors?.['required'] && Description.touched">*Description is Required</div>
+            <div class="warning" *ngIf="Description.errors?.['minlength']">*Too short</div>
+        </div>
+        <div>
+            <select formControlName="category">
+                <option value="select" disabled>Select Category</option>
+                <option>Foodgrains</option>
+                <option>Fruits & Vegetables</option>
+                <option>Egg & Meat</option>
+                <option>Bakery</option>
+                <option>Beverages</option>
+                <option>Snack</option>
+                <option>Accessories</option>
+            </select>
+            <div class="warning" *ngIf="Category.errors?.['required'] && Category.touched">*Category is Required</div>
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="quantity" 
+                placeholder="Product Quantity"
+            >
+            <div class="warning" *ngIf="Quantity.errors?.['required'] && Quantity.touched">*Quantity is Required</div>
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="price" 
+                placeholder="Product Price"
+            >
+            <div class="warning" *ngIf="Price.errors?.['required'] && Price.touched">*Price is Required</div>
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="discount" 
+                placeholder="Maximun Discount"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="specification" 
+                placeholder="Product Quantity per pack"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="image" 
+                placeholder="Image URL"
+            >
+            <div class="warning" *ngIf="Image.errors?.['required'] && Image.touched">*Image is Required</div>
+        </div>
+        <!-- <div>
+            <input type="file">
+        </div> -->
+        <button>Add</button>
+    </form>
+</div>

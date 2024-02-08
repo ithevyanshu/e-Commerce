@@ -1,0 +1,24 @@
+<div class="section">
+    <div class="image">
+        <img [src]="product?.image" alt="">
+    </div>
+    <div class="detail">
+        <div class="flex-space">
+            <h6>{{product?.productName}}, {{product?.specification}}</h6>
+            <button *ngIf="isLogin && !isAdmin && product?.quantity!=0" (click)="onClick()">{{button}}</button>
+            <h5 *ngIf="product?.quantity==0 && !isAdmin">Out of Stock</h5>
+            <div *ngIf="isAdmin">
+                <button class="edit" (click)="update(product.id)">Edit</button>
+                <button (click)="delete(product.id)" class="delete">Delete</button>
+            </div>
+        </div>
+        <h6 *ngIf="isAdmin">Available Quantity : {{product?.quantity}}</h6>
+        <div class="flex-space price">
+            <h5 class="red" *ngIf="product?.discount!=0">₹{{price | number: '1.2-2'}}</h5>
+            <h5>₹{{finalPrice | number: '1.2-2'}}<span *ngIf="product?.discount!=0"> {{product?.discount}}% off</span></h5>
+        </div>
+
+        <p>{{product?.description}}</p>
+    </div>
+    <div></div>
+</div>

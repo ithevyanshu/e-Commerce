@@ -1,0 +1,43 @@
+<div class="clear">
+    <button class="button" (click)="clearCart()">Clear Cart</button>
+</div>
+
+<div class="section">
+    <h4 *ngIf="quantity==0">Cart is Empty</h4>
+    <div class="flex-center product" *ngFor="let product of products">
+        <div class="image">
+            <img src="{{product.image}}" alt="{{product.name}}">
+        </div>
+        <div class="description">
+            <div class="product-head">
+                <a class="product-name" routerLink="../product-detail/{{product.id}}">{{product.name}}</a>
+            </div>
+            <p class="price">₹{{product.price}} <span class="discount" *ngIf="product.discount != 0">{{product.discount}}% off</span></p>
+        </div>
+        <div class="price">
+            <p class="red">₹{{total(product) | number: '1.2-2'}}</p>
+            <p>₹{{final(product) | number: '1.2-2'}}</p>
+        </div>
+        <div class="price flex-center">
+            <button class="delete" (click)="decrease(product)">-</button>
+            {{product.quantity}}
+            <button class="delete" (click)="increase(product)">+</button>
+            <button class="delete" (click)="clear(product)">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<footer class="fixed-footer">
+    <div class="footer">
+        <div>
+            <h6>Quantity : {{quantity}}</h6>
+            <h6>Total : ₹ {{cartTotal | number : '1.2-2'}}</h6>
+        </div>
+        <div>
+            <button class="button" (click)="placeOrder()">Place Order</button>
+        </div>
+    </div>
+
+</footer>

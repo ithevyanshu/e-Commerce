@@ -1,0 +1,54 @@
+<div class="section">
+    <form #customSearch="ngForm" (ngSubmit)="search(customSearch.value)">
+        <div class="flex-center">
+            <div class="select">
+                <select class="from-component" [(ngModel)]="selectedOption" name="option">
+                    <option value="choose">All</option>
+                    <option>Foodgrains</option>
+                    <option>Fruits & Vegetables</option>
+                    <option>Egg & Meat</option>
+                    <option>Bakery</option>
+                    <option>Beverages</option>
+                    <option>Snack</option>
+                    <option>Accessories</option>
+                </select>
+            </div>
+            <div class="input">
+                <input class="from-component" ngModel type="text" name="name" placeholder="Search Product">
+            </div>
+            <div class="search">
+                <button class="from-component flex-center">
+                    <span class="material-symbols-outlined">search</span>
+                    Search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="section">
+    <h4 *ngIf="isEmpty()">Item not exists</h4>
+    <div class="flex-center product" *ngFor="let product of customProducts | paginate: { itemsPerPage: 4, currentPage: p } ">
+        <div class="image">
+            <img src="{{product.image}}" alt="{{product.productName}}">
+        </div>
+        <div class="description">
+            <div class="product-head">
+                <a class="product-name" routerLink="../product-detail/{{product.id}}">{{product.productName}}</a>
+                <div *ngIf="isAdmin()">
+                    <button class="edit" (click)="update(product.id)">Edit</button>
+                    <button class="delete" (click)="delete(product.id)">Delete</button>
+                </div>
+            </div>
+            <p>{{product.description | slice:0:100}}...</p>
+            <p>{{product.specification}} <span class="discount" *ngIf="product.discount != 0">upto {{product.discount}}% off</span></p>
+        </div>
+        <div class="price">
+            <p>₹{{product.price}}</p>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="count>4" class="flex-center">
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>

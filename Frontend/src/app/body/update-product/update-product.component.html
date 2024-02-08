@@ -1,0 +1,62 @@
+<div class="form">
+    <h3>Update Product</h3>
+    <form [formGroup]="product" (ngSubmit)="onSubmit()">
+        <div>
+            <input 
+                type="text" 
+                formControlName="productName"
+                placeholder="Product Name"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="description" 
+                placeholder="Product Description"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="category" 
+                placeholder="Product Category"
+            >
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="quantity" 
+                placeholder="Product Quantity"
+            >
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="price" 
+                placeholder="Product Price"
+            >
+        </div>
+        <div>
+            <input 
+                type="number" 
+                formControlName="discount" 
+                placeholder="Maximun Discount"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="specification" 
+                placeholder="Product Quantity per pack"
+            >
+        </div>
+        <div>
+            <input 
+                type="text" 
+                formControlName="image" 
+                placeholder="Image URL"
+            >
+        </div>
+        <button>Update</button>
+    </form>
+</div>
